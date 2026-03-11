@@ -126,7 +126,7 @@ Cuando la opción está desactivada, la contraseña se muestra como puntos para 
 
 # Validación detallada de requisitos (versión alternativa)
 
-Otra implementación posible consiste en verificar cada requisito por separado para indicar exactamente qué condición falta en la contraseña.
+Otra implementación posible consiste en verificar cada requisito por separado para indicar exactamente qué condición falta en la contraseña. (Se encuentra en el programa como comentario)
 
 ```csharp
 string contraseña1 = txt1.Text;
@@ -140,7 +140,7 @@ if (!Regex.IsMatch(contraseña1, "[A-Z]"))
     mensaje += "Falta una letra mayúscula\n";
 }
 
-// minusculas
+// Minusculas
 if (!Regex.IsMatch(contraseña1, "[a-z]"))
 {
     mensaje += "Falta una letra minúscula\n";
@@ -165,7 +165,7 @@ if (contraseña1 != contraseña2)
     return;
 }
 
-// Si faltó algo
+// Si faltó algo lo guarda para arrojar en la pantalla de error
 if (mensaje != "")
 {
     MessageBox.Show(mensaje, "Error en la contraseña");
