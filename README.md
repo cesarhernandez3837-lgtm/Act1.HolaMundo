@@ -129,37 +129,51 @@ Cuando la opción está desactivada, la contraseña se muestra como puntos para 
 Otra implementación posible consiste en verificar cada requisito por separado para indicar exactamente qué condición falta en la contraseña.
 
 ```csharp
-string contraseña = txt1.Text;
+string contraseña1 = txt1.Text;
+string contraseña2 = txt2.Text;
+
 string mensaje = "";
 
-if (!Regex.IsMatch(contraseña, "[A-Z]"))
+// Mayusculas
+if (!Regex.IsMatch(contraseña1, "[A-Z]"))
 {
     mensaje += "Falta una letra mayúscula\n";
 }
 
-if (!Regex.IsMatch(contraseña, "[a-z]"))
+// minusculas
+if (!Regex.IsMatch(contraseña1, "[a-z]"))
 {
     mensaje += "Falta una letra minúscula\n";
 }
 
-if (!Regex.IsMatch(contraseña, "[0-9]"))
+//Numero
+if (!Regex.IsMatch(contraseña1, "[0-9]"))
 {
     mensaje += "Falta un número\n";
 }
 
-if (!Regex.IsMatch(contraseña, "[^a-zA-Z0-9]"))
+// Simbolo
+if (!Regex.IsMatch(contraseña1, "[^a-zA-Z0-9]"))
 {
     mensaje += "Falta un símbolo\n";
 }
 
+// Validar que coincidan
+if (contraseña1 != contraseña2)
+{
+    MessageBox.Show("Las contraseñas no coinciden");
+    return;
+}
+
+// Si faltó algo
 if (mensaje != "")
 {
-    MessageBox.Show(mensaje);
+    MessageBox.Show(mensaje, "Error en la contraseña");
+    return;
 }
-else
-{
-    MessageBox.Show("La contraseña cumple con todos los requisitos");
-}
+           
+// Si todo está correcto
+MessageBox.Show("La contraseña ha sido validada");
 ```
 
 Esta implementación permite que el usuario identifique exactamente qué requisito necesita agregar.
